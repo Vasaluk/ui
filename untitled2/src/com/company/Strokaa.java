@@ -19,40 +19,40 @@ public class Strokaa {
         ss = ss + " ";
 
 
+        for (int i = 1; i <= n; i++) {
+            c = ss.charAt(i);//выделение символов
+
+            if ((c == ' ') && (ss.charAt(i - 1) != ' '))
+                cl++;
+        }
+        e = cl;
+
+
+        if (cl == 3) {
+            int l = 0;
+
+            for (int i = 0; i < 3; i++) {
+                slovo[i] = "";
+            }
+
             for (int i = 1; i <= n; i++) {
                 c = ss.charAt(i);//выделение символов
 
+                if (ss.charAt(i - 1) != ' ')
+                    slovo[l] = slovo[l] + ss.charAt(i - 1);
+
                 if ((c == ' ') && (ss.charAt(i - 1) != ' '))
-                    cl++;
+                    l++;
             }
-            e = cl;
 
+        }
+        else if (cl>3){
 
-            if (cl == 3) {
-                int l = 0;
-
-                for (int i = 0; i < 3; i++) {
-                    slovo[i] = "";
-                }
-
-                for (int i = 1; i <= n; i++) {
-                    c = ss.charAt(i);//выделение символов
-
-                    if (ss.charAt(i - 1) != ' ')
-                        slovo[l] = slovo[l] + ss.charAt(i - 1);
-
-                    if ((c == ' ') && (ss.charAt(i - 1) != ' '))
-                        l++;
-                }
-
-            }
-            else if (cl>3){
-
-                throw new Exception("формат математической операции не удовлетворяет заданию - два операнда и один оператор");
-            }
-            else if (cl<3){
-                throw new Exception("строка не является математической операцией");
-            }
+            throw new Exception("формат математической операции не удовлетворяет заданию - два операнда и один оператор");
+        }
+        else if (cl<3){
+            throw new Exception("строка не является математической операцией");
+        }
 
         return cl;
     }
@@ -107,8 +107,12 @@ public class Strokaa {
             }
 
         }
-        else if ((aa[0] > 0)||(aa[1] > 0)) {
+        else if (((aa[0] > 0)&&(aa[0] != 2))||((aa[1] > 0)&&(aa[1] != 2))) {
             throw new Exception("используются одновременно разные системы счисления");
+        }
+        else{
+
+            throw new Exception("формат математической операции не удовлетворяет заданию - два операнда и один оператор");
         }
 
     }
