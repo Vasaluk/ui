@@ -7,7 +7,7 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Введите количество переменных");
+        System.out.println("Введите выражение");
         String aaa = in.nextLine();
 
         Strokaa obj = new Strokaa(aaa);
